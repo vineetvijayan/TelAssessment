@@ -10,6 +10,6 @@ import retrofit2.http.GET;
 
 public interface RetrofitAPIInterface {
 
-    @GET("/facts.json")
-    Call<ArrayList<DataModel>> retrieveList();
+    @GET("facts.json")
+    Call<DataModel> retrieveList();
 }
