@@ -1,6 +1,5 @@
 package com.example.telassessment.ui;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import android.view.ViewGroup;
 import com.example.telassessment.R;
 import com.example.telassessment.adapter.CardListAdapter;
 import com.example.telassessment.databinding.FragmentListCardBinding;
-import com.example.telassessment.model.DataModel;
 import com.example.telassessment.viewmodel.CardsListViewModel;
 
 public class CardListFragment extends Fragment {
@@ -55,6 +53,7 @@ public class CardListFragment extends Fragment {
         // Update the list when the data changes
         mViewModel.getListObservable().observe(this, data -> {
             if (data != null) {
+
                 adapter.setList(data);
 
                 // set action bar title
@@ -63,6 +62,7 @@ public class CardListFragment extends Fragment {
                         ((CardsListActivity) getActivity()).getSupportActionBar().setTitle(data.getTitle());
                     }
                 }
+            } else {
             }
         });
     }

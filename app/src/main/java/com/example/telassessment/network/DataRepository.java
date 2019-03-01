@@ -11,8 +11,10 @@ import retrofit2.Response;
 
 public class DataRepository {
 
+    static MutableLiveData<DataModel> data = new MutableLiveData<>();
+
+
     public static MutableLiveData<DataModel> getList() {
-        final MutableLiveData<DataModel> data = new MutableLiveData<>();
         RetrofitAPIInterface retrofitApiInterface = RetrofitAPIClient.getRetrofitClient().create(RetrofitAPIInterface.class);
 
         Call<DataModel> call = retrofitApiInterface.retrieveList();
@@ -25,6 +27,7 @@ public class DataRepository {
 
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
+                data.setValue(null);
             }
         });
 
