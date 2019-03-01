@@ -15,7 +15,6 @@ public class CardsListViewModel extends AndroidViewModel {
 
     private LiveData<DataModel> listObservable;
     public ObservableBoolean isLoading = new ObservableBoolean();
-    public ObservableBoolean isError = new ObservableBoolean();
 
     public CardsListViewModel(@NonNull Application application) {
         super(application);

@@ -19,6 +19,9 @@ public class DataBindingAdapter {
     public static void setImageUri(ImageView view, String imageUrl) {
         Glide.with(view.getContext())
                 .load(imageUrl)
+                .placeholder(R.drawable.loading_spinner)
+                .dontAnimate()
+                .fitCenter()
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
