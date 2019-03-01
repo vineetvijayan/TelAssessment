@@ -1,6 +1,5 @@
 package com.example.telassessment.ui;
 
-import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
@@ -18,8 +17,6 @@ import com.example.telassessment.adapter.CardListAdapter;
 import com.example.telassessment.databinding.FragmentListCardBinding;
 import com.example.telassessment.model.DataModel;
 import com.example.telassessment.viewmodel.CardsListViewModel;
-
-import java.util.List;
 
 public class CardListFragment extends Fragment {
 
@@ -49,19 +46,16 @@ public class CardListFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(CardsListViewModel.class);
+        binding.setViewModel(mViewModel);
         observeViewModel(mViewModel);
     }
 
-    private void observeViewModel(CardsListViewModel mViewModel) {
+    private void observeViewModel(final CardsListViewModel mViewModel) {
         // Update the list when the data changes
-        mViewModel.getListObservable().observe(this, new Observer<DataModel>() {
-            @Override
-            public void onChanged(@Nullable DataModel data) {
-                if (data != null) {
-                    adapter.setList(data);
-                }
+        mViewModel.getListObservable().observe(this, data -> {
+            if (data != null) {
+                adapter.setList(data);
             }
         });
     }
-
 }

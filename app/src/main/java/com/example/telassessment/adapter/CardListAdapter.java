@@ -1,6 +1,9 @@
 package com.example.telassessment.adapter;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -9,6 +12,7 @@ import com.example.telassessment.R;
 import com.example.telassessment.databinding.ItemListContentBinding;
 import com.example.telassessment.model.DataModel;
 import com.example.telassessment.model.Rows;
+import com.example.telassessment.viewmodel.CardsListViewModel;
 
 import java.util.List;
 
@@ -16,11 +20,7 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.ViewHo
 
     private List<Rows> mValues;
 
-    public CardListAdapter(
-    ) {
-    }
-
-    public void setPostList(List<DataModel> list) {
+    public CardListAdapter() {
 
     }
 

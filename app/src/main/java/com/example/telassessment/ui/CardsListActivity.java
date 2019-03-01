@@ -1,9 +1,11 @@
 package com.example.telassessment.ui;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.telassessment.R;
+import com.example.telassessment.viewmodel.CardsListViewModel;
 
 public class CardsListActivity extends AppCompatActivity {
 
