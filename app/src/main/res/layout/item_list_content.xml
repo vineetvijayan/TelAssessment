@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp"
-        android:background="#D3D3D3"
+        android:background="@color/list_item_bg_color"
         android:orientation="vertical">
 
         <TextView
