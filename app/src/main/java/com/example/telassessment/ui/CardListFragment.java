@@ -54,6 +54,7 @@ public class CardListFragment extends Fragment {
         mViewModel.getListObservable().observe(this, data -> {
             if (data != null) {
 
+                // set list to recycler view adapter
                 adapter.setList(data);
 
                 // set action bar title
@@ -62,7 +63,14 @@ public class CardListFragment extends Fragment {
                         ((CardsListActivity) getActivity()).getSupportActionBar().setTitle(data.getTitle());
                     }
                 }
+
+                // dismiss progress
+                mViewModel.isLoading.set(false);
+                mViewModel.isError.set(false);
+
             } else {
+                mViewModel.isLoading.set(false);
+                mViewModel.isError.set(true);
             }
         });
     }

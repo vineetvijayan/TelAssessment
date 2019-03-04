@@ -23,7 +23,6 @@ public class CardsListViewModel extends AndroidViewModel {
     private void fetchList() {
         isLoading.set(true);
         this.listObservable = DataRepository.getList();
-        isLoading.set(false);
     }
 
     public LiveData<DataModel> getListObservable() {

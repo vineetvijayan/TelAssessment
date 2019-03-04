@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,7 +10,6 @@
         <variable
             name="viewModel"
             type="com.example.telassessment.viewmodel.CardsListViewModel" />
-
     </data>
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -18,23 +18,28 @@
         app:onRefreshListener="@{() -> viewModel.onRefresh()}"
         app:refreshing="@{viewModel.isLoading}">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/item_list"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:visibility="@{viewModel.isError ? View.GONE : View.VISIBLE}" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_no_data"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="@string/no_data_to_display"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:visibility="@{viewModel.isError ? View.VISIBLE : View.GONE}" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/item_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:visibility="@{viewModel.isError ? View.GONE : View.VISIBLE}" />
+
+            <TextView
+                android:id="@+id/tv_no_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/no_data_to_display"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:visibility="@{viewModel.isError ? View.VISIBLE : View.GONE}" />
+        </RelativeLayout>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 </layout>
