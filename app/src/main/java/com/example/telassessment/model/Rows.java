@@ -7,6 +7,15 @@ public class Rows implements Serializable {
     private String title;
     private String description;
     private String imageHref;
+    private boolean imgLoadFailed;
+
+    public boolean isImgLoadFailed() {
+        return imgLoadFailed;
+    }
+
+    public void setImgLoadFailed(boolean imgLoadFailed) {
+        this.imgLoadFailed = imgLoadFailed;
+    }
 
     public String getTitle() {
         return title;
