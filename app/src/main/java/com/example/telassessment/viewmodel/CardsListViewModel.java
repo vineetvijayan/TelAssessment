@@ -1,11 +1,8 @@
 package com.example.telassessment.viewmodel;
 
-import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableBoolean;
-import android.support.annotation.NonNull;
 
 import com.example.telassessment.model.DataModel;
 import com.example.telassessment.network.DataRepository;

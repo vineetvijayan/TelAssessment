@@ -19,7 +19,6 @@ import com.example.telassessment.viewmodel.CardsListViewModel;
 
 public class CardListFragment extends Fragment {
 
-    private CardsListViewModel mViewModel;
     private FragmentListCardBinding binding;
     private CardListAdapter adapter;
 
@@ -44,7 +43,7 @@ public class CardListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(CardsListViewModel.class);
+        CardsListViewModel mViewModel = ViewModelProviders.of(this).get(CardsListViewModel.class);
         binding.setViewModel(mViewModel);
         observeViewModel(mViewModel);
     }
@@ -59,7 +58,8 @@ public class CardListFragment extends Fragment {
 
                 // set action bar title
                 if (!TextUtils.isEmpty(data.getTitle())) {
-                    if (getActivity() instanceof CardsListActivity) {
+                    if (getActivity() instanceof CardsListActivity &&
+                            getActivity().getActionBar() != null) {
                         ((CardsListActivity) getActivity()).getSupportActionBar().setTitle(data.getTitle());
                     }
                 }

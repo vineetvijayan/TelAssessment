@@ -1,6 +1,7 @@
 package com.example.telassessment.adapter;
 
 import android.databinding.DataBindingUtil;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -26,8 +27,9 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.ViewHo
     }
 
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         ItemListContentBinding binding = DataBindingUtil
                 .inflate(LayoutInflater.from(parent.getContext()), R.layout.item_list_content,
@@ -37,7 +39,7 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.binding.setData(mValues.get(position));
         holder.binding.executePendingBindings();
     }
@@ -51,7 +53,7 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.ViewHo
 
         final ItemListContentBinding binding;
 
-        public ViewHolder(ItemListContentBinding binding) {
+        ViewHolder(ItemListContentBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

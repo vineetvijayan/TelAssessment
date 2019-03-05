@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TelAssessment</string>
     <string name="no_data_to_display">No data to display</string>
+    <string name="item_image_cd">item_image</string>
 </resources>

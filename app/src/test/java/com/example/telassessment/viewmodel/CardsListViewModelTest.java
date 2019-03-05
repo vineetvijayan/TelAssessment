@@ -4,9 +4,7 @@ import android.arch.core.executor.testing.InstantTaskExecutorRule;
 import android.arch.lifecycle.MutableLiveData;
 
 import com.example.telassessment.model.DataModel;
-import com.example.telassessment.network.DataRepository;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,23 +17,11 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class CardsListViewModelTest {
 
     @Mock
-    DataRepository dataRepository;
-
-    @Mock
     CardsListViewModel viewModel;
 
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule =
             new InstantTaskExecutorRule();
-
-//    @Before
-//    public void setUp() {
-//        MockitoAnnotations.initMocks(this);
-//    }
-
-    @After
-    public void tearDown() {
-    }
 
     @Test
     public void fetchList() {
@@ -54,11 +40,6 @@ public class CardsListViewModelTest {
         Mockito.verify(viewModel).fetchList();
 
         Assert.assertEquals(data, viewModel.getListObservable());
-    }
-
-    @Test
-    public void setListObservable() {
-
     }
 
     @Test

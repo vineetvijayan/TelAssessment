@@ -10,7 +10,7 @@ import retrofit2.Response;
 
 public class DataRepository {
 
-    static MutableLiveData<DataModel> data = new MutableLiveData<>();
+    private static final MutableLiveData<DataModel> data = new MutableLiveData<>();
 
     public MutableLiveData<DataModel> getList() {
         RetrofitAPIInterface retrofitApiInterface = RetrofitAPIClient.getRetrofitClient().create(RetrofitAPIInterface.class);
