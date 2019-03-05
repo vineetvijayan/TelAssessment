@@ -1,6 +1,5 @@
 package com.example.telassessment.network;
 
-
 import android.arch.lifecycle.MutableLiveData;
 
 import com.example.telassessment.model.DataModel;
@@ -13,8 +12,7 @@ public class DataRepository {
 
     static MutableLiveData<DataModel> data = new MutableLiveData<>();
 
-
-    public static MutableLiveData<DataModel> getList() {
+    public MutableLiveData<DataModel> getList() {
         RetrofitAPIInterface retrofitApiInterface = RetrofitAPIClient.getRetrofitClient().create(RetrofitAPIInterface.class);
 
         Call<DataModel> call = retrofitApiInterface.retrieveList();
