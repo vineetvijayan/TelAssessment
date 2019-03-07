@@ -12,8 +12,7 @@ public class DataRepository {
 
     private static final MutableLiveData<DataModel> data = new MutableLiveData<>();
 
-    public MutableLiveData<DataModel> getList() {
-        RetrofitAPIInterface retrofitApiInterface = RetrofitAPIClient.getRetrofitClient().create(RetrofitAPIInterface.class);
+    public static MutableLiveData<DataModel> getList(RetrofitAPIInterface retrofitApiInterface) {
 
         Call<DataModel> call = retrofitApiInterface.retrieveList();
         call.enqueue(new Callback<DataModel>() {

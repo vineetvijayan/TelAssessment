@@ -43,7 +43,11 @@ public class CardListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        CardsListViewModel mViewModel = ViewModelProviders.of(this).get(CardsListViewModel.class);
+        initBinding();
+    }
+
+    private void initBinding() {
+        CardsListViewModel mViewModel = new CardsListViewModel(getActivity());
         binding.setViewModel(mViewModel);
         observeViewModel(mViewModel);
     }

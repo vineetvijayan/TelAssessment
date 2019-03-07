@@ -26,6 +26,7 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        compileOptions.incremental = false
     }
     testOptions {
         unitTests.returnDefaultValues = true
@@ -58,4 +59,10 @@ dependencies {
 
     // for swipe refresh layout
     implementation 'com.android.support:swiperefreshlayout:28.0.0'
+
+    // dagger
+    implementation "com.google.dagger:dagger:$daggerVer"
+    implementation "com.google.dagger:dagger-android-support:$daggerVer"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVer"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVer"
 }
