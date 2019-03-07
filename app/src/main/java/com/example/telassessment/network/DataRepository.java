@@ -2,7 +2,10 @@ package com.example.telassessment.network;
 
 import android.arch.lifecycle.MutableLiveData;
 
+import com.example.telassessment.app.AppController;
 import com.example.telassessment.model.DataModel;
+
+import javax.inject.Inject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -10,11 +13,18 @@ import retrofit2.Response;
 
 public class DataRepository {
 
+    @Inject
+    RetrofitAPIInterface webService;
+
     private static final MutableLiveData<DataModel> data = new MutableLiveData<>();
 
-    public static MutableLiveData<DataModel> getList(RetrofitAPIInterface retrofitApiInterface) {
+    public DataRepository() {
+        AppController.getAppComponent().inject(this);
+    }
 
-        Call<DataModel> call = retrofitApiInterface.retrieveList();
+    public MutableLiveData<DataModel> getList() {
+
+        Call<DataModel> call = webService.retrieveList();
         call.enqueue(new Callback<DataModel>() {
 
             @Override

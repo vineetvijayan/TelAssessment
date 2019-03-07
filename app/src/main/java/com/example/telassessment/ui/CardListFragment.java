@@ -1,6 +1,5 @@
 package com.example.telassessment.ui;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -47,9 +46,15 @@ public class CardListFragment extends Fragment {
     }
 
     private void initBinding() {
-        CardsListViewModel mViewModel = new CardsListViewModel(getActivity());
+        CardsListViewModel mViewModel = new CardsListViewModel();
         binding.setViewModel(mViewModel);
+        callApi(mViewModel);
         observeViewModel(mViewModel);
+    }
+
+    private void callApi(CardsListViewModel mViewModel) {
+        // fetch list to be displayed
+        mViewModel.fetchList();
     }
 
     private void observeViewModel(final CardsListViewModel mViewModel) {
