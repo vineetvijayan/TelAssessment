@@ -16,6 +16,8 @@ import com.example.telassessment.adapter.CardListAdapter;
 import com.example.telassessment.databinding.FragmentListCardBinding;
 import com.example.telassessment.viewmodel.CardsListViewModel;
 
+import java.util.Objects;
+
 public class CardListFragment extends Fragment {
 
     private FragmentListCardBinding binding;
@@ -31,11 +33,6 @@ public class CardListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_card, container, false);
-
-        adapter = new CardListAdapter();
-        binding.itemList.setAdapter(adapter);
-        binding.itemList.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         return binding.getRoot();
     }
 
@@ -43,6 +40,13 @@ public class CardListFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initBinding();
+        setAdapter();
+    }
+
+    private void setAdapter() {
+        adapter = new CardListAdapter();
+        binding.itemList.setAdapter(adapter);
+        binding.itemList.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     private void initBinding() {
@@ -69,7 +73,7 @@ public class CardListFragment extends Fragment {
                 if (!TextUtils.isEmpty(data.getTitle())) {
                     if (getActivity() instanceof CardsListActivity &&
                             getActivity().getActionBar() != null) {
-                        ((CardsListActivity) getActivity()).getSupportActionBar().setTitle(data.getTitle());
+                        Objects.requireNonNull(((CardsListActivity) getActivity()).getSupportActionBar()).setTitle(data.getTitle());
                     }
                 }
 

@@ -1,6 +1,7 @@
 package com.example.telassessment.viewmodel;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableBoolean;
 
@@ -12,7 +13,7 @@ import javax.inject.Inject;
 
 public class CardsListViewModel extends ViewModel {
 
-    private LiveData<DataModel> listObservable;
+    private MutableLiveData<DataModel> listObservable;
     public final ObservableBoolean isLoading = new ObservableBoolean();
     public final ObservableBoolean isError = new ObservableBoolean();
 
@@ -33,7 +34,7 @@ public class CardsListViewModel extends ViewModel {
         return listObservable;
     }
 
-    public void setListObservable(LiveData<DataModel> listObservable) {
+    private void setListObservable(MutableLiveData<DataModel> listObservable) {
         this.listObservable = listObservable;
     }
 

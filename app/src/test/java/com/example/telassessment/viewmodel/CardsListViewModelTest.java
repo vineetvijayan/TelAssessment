@@ -40,7 +40,6 @@ public class CardsListViewModelTest {
         data.postValue(dataModel);
 
         //Setting how up the mock behaves
-//        viewModel = new CardsListViewModel();
         viewModel = org.mockito.Mockito.mock(CardsListViewModel.class);
         Mockito.doReturn(data).when(viewModel).getListObservable();
 //

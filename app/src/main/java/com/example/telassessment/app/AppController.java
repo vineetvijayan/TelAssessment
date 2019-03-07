@@ -9,10 +9,6 @@ import com.example.telassessment.di.DaggerAppComponent;
 public class AppController extends Application {
     private static AppComponent appComponent;
 
-    private static AppController get() {
-        return (AppController) appComponent;
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
