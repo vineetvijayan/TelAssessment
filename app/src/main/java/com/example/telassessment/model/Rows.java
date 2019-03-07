@@ -1,8 +1,6 @@
 package com.example.telassessment.model;
 
-import java.io.Serializable;
-
-public class Rows implements Serializable {
+public class Rows {
 
     private String title;
     private String description;

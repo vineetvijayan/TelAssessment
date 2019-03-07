@@ -1,5 +1,6 @@
 package com.example.telassessment.di;
 
+import com.example.telassessment.app.ApiConstants;
 import com.example.telassessment.network.RetrofitAPIInterface;
 
 import javax.inject.Singleton;
@@ -21,7 +22,7 @@ public class WebServiceModule {
     @Singleton
     public Retrofit retrofit(GsonConverterFactory gsonConverterFactory) {
         return new Retrofit.Builder()
-                .baseUrl("https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/")
+                .baseUrl(ApiConstants.BASE_URL)
                 .addConverterFactory(gsonConverterFactory)
                 .build();
     }

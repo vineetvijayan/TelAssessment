@@ -1,9 +1,8 @@
 package com.example.telassessment.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DataModel implements Serializable {
+public class DataModel {
 
     private String title;
     private ArrayList<Rows> rows;
