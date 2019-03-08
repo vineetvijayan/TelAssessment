@@ -27,18 +27,10 @@ public class CardsListViewModel extends ViewModel {
     public void fetchList() {
         isLoading.set(true);
         AppController.getAppComponent().inject(this);
-        setListObservable(repository.getList());
+        listObservable = repository.getList();
     }
 
     public LiveData<DataModel> getListObservable() {
         return listObservable;
-    }
-
-    private void setListObservable(MutableLiveData<DataModel> listObservable) {
-        this.listObservable = listObservable;
-    }
-
-    public void onRefresh() {
-        fetchList();
     }
 }

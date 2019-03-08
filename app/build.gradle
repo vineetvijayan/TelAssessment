@@ -69,4 +69,7 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$daggerVer"
     annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVer"
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVer"
+
+    testImplementation 'com.squareup.okhttp3:mockwebserver:3.13.1'
+
 }
