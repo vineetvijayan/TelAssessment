@@ -4,6 +4,7 @@ import android.arch.lifecycle.MutableLiveData;
 
 import com.example.telassessment.app.AppController;
 import com.example.telassessment.model.DataModel;
+import com.example.telassessment.model.DataRepoModel;
 
 import javax.inject.Inject;
 
@@ -16,12 +17,12 @@ public class DataRepository {
     @Inject
     RetrofitAPIInterface webService;
 
-    private static MutableLiveData<DataModel> data = new MutableLiveData<>();
+    private static MutableLiveData<DataRepoModel> data = new MutableLiveData<>();
 
     public DataRepository() {
     }
 
-    public MutableLiveData<DataModel> getList() {
+    public MutableLiveData<DataRepoModel> getList() {
 
         AppController.getAppComponent().inject(this);
 
@@ -30,12 +31,12 @@ public class DataRepository {
 
             @Override
             public void onResponse(Call<DataModel> call, Response<DataModel> response) {
-                data.setValue(response.body());
+                data.setValue(new DataRepoModel(response.body()));
             }
 
             @Override
             public void onFailure(Call<DataModel> call, Throwable t) {
-                data.setValue(null);
+                data.setValue(new DataRepoModel(t));
             }
         });
 

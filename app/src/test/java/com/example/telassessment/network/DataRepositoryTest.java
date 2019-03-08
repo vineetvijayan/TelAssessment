@@ -4,6 +4,7 @@ import android.arch.core.executor.testing.InstantTaskExecutorRule;
 import android.arch.lifecycle.MutableLiveData;
 
 import com.example.telassessment.model.DataModel;
+import com.example.telassessment.model.DataRepoModel;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -38,11 +39,12 @@ public class DataRepositoryTest {
     @Test
     public void getList() {
 
-        MutableLiveData<DataModel> data = new MutableLiveData<>();
+        MutableLiveData<DataRepoModel> data = new MutableLiveData<>();
 
         DataModel dataModel = Mockito.spy(DataModel.class);
         dataModel.setTitle("abc");
-        data.setValue(dataModel);
+        DataRepoModel dataRepoModel = new DataRepoModel(dataModel);
+        data.setValue(dataRepoModel);
 
         //Setting how up the mock behaves
         Mockito.doReturn(data).when(dataRepository).getList();

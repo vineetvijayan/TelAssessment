@@ -6,14 +6,14 @@ import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableBoolean;
 
 import com.example.telassessment.app.AppController;
-import com.example.telassessment.model.DataModel;
+import com.example.telassessment.model.DataRepoModel;
 import com.example.telassessment.network.DataRepository;
 
 import javax.inject.Inject;
 
 public class CardsListViewModel extends ViewModel {
 
-    public MutableLiveData<DataModel> listObservable;
+    public MutableLiveData<DataRepoModel> listObservable;
     public ObservableBoolean isLoading = new ObservableBoolean();
     public ObservableBoolean isError = new ObservableBoolean();
 
@@ -30,7 +30,7 @@ public class CardsListViewModel extends ViewModel {
         listObservable = repository.getList();
     }
 
-    public LiveData<DataModel> getListObservable() {
+    public LiveData<DataRepoModel> getListObservable() {
         return listObservable;
     }
 }

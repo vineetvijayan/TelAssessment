@@ -70,6 +70,10 @@ public class RecyclerViewAssertTest {
 
     private int getRVcount() {
         RecyclerView recyclerView = rule.getActivity().findViewById(R.id.item_list);
-        return recyclerView.getAdapter().getItemCount();
+        if (recyclerView != null && recyclerView.getAdapter() != null) {
+            return recyclerView.getAdapter().getItemCount();
+        }
+        return 0;
     }
 }
+

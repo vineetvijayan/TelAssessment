@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.telassessment.R;
 import com.example.telassessment.adapter.CardListAdapter;
@@ -64,16 +65,16 @@ public class CardListFragment extends Fragment {
     private void observeViewModel(final CardsListViewModel mViewModel) {
         // Update the list when the data changes
         mViewModel.getListObservable().observe(this, data -> {
-            if (data != null) {
+            if (data != null && data.getDataModel() != null) {
 
                 // set list to recycler view adapter
-                adapter.setList(data);
+                adapter.setList(data.getDataModel());
 
                 // set action bar title
-                if (!TextUtils.isEmpty(data.getTitle())) {
+                if (!TextUtils.isEmpty(data.getDataModel().getTitle())) {
                     if (getActivity() instanceof CardsListActivity &&
                             getActivity().getActionBar() != null) {
-                        Objects.requireNonNull(((CardsListActivity) getActivity()).getSupportActionBar()).setTitle(data.getTitle());
+                        Objects.requireNonNull(((CardsListActivity) getActivity()).getSupportActionBar()).setTitle(data.getDataModel().getTitle());
                     }
                 }
 
@@ -84,6 +85,10 @@ public class CardListFragment extends Fragment {
             } else {
                 mViewModel.isLoading.set(false);
                 mViewModel.isError.set(true);
+
+                if (data != null && data.getThrowable() != null && !TextUtils.isEmpty(data.getThrowable().getMessage())) {
+                    Toast.makeText(getActivity(), data.getThrowable().getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

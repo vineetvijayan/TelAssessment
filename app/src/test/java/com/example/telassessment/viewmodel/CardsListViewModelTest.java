@@ -4,6 +4,7 @@ import android.arch.core.executor.testing.InstantTaskExecutorRule;
 import android.arch.lifecycle.MutableLiveData;
 
 import com.example.telassessment.model.DataModel;
+import com.example.telassessment.model.DataRepoModel;
 import com.example.telassessment.network.DataRepository;
 import com.example.telassessment.network.RetrofitAPIInterface;
 
@@ -29,8 +30,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CardsListViewModelTest {
@@ -69,8 +70,10 @@ public class CardsListViewModelTest {
         dataModel = Mockito.mock(DataModel.class);
         dataModel.setTitle("abc");
 
-        MutableLiveData<DataModel> data = new MutableLiveData<>();
-        data.postValue(dataModel);
+        DataRepoModel dataRepoModel = new DataRepoModel(dataModel);
+
+        MutableLiveData<DataRepoModel> data = new MutableLiveData<>();
+        data.postValue(dataRepoModel);
 
         //Setting how up the mock behaves
         Mockito.doReturn(data).when(viewModel).getListObservable();
@@ -98,7 +101,7 @@ public class CardsListViewModelTest {
         Call<DataModel> call = service.retrieveList();
         Response<DataModel> dataModel = call.execute();
 
-        assertTrue(dataModel != null);
+        assertNotNull(dataModel);
         assertEquals("Beavers", dataModel.body().getRows().get(0).getTitle());
         assertEquals("About Canada", dataModel.body().getTitle());
     }
