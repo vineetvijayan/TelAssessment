@@ -13,9 +13,9 @@ import javax.inject.Inject;
 
 public class CardsListViewModel extends ViewModel {
 
-    private MutableLiveData<DataModel> listObservable;
-    public final ObservableBoolean isLoading = new ObservableBoolean();
-    public final ObservableBoolean isError = new ObservableBoolean();
+    public MutableLiveData<DataModel> listObservable;
+    public ObservableBoolean isLoading = new ObservableBoolean();
+    public ObservableBoolean isError = new ObservableBoolean();
 
     @Inject
     DataRepository repository;

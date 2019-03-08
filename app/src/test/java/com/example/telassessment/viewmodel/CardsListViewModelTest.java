@@ -4,6 +4,7 @@ import android.arch.core.executor.testing.InstantTaskExecutorRule;
 import android.arch.lifecycle.MutableLiveData;
 
 import com.example.telassessment.model.DataModel;
+import com.example.telassessment.network.DataRepository;
 import com.example.telassessment.network.RetrofitAPIInterface;
 
 import org.junit.After;
@@ -12,6 +13,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -33,11 +35,11 @@ import static org.junit.Assert.assertTrue;
 @RunWith(MockitoJUnitRunner.class)
 public class CardsListViewModelTest {
 
-    @Mock
+    @InjectMocks
     CardsListViewModel viewModel;
 
     @Mock
-    DataModel dataModel;
+    DataRepository repository;
 
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule =
@@ -46,6 +48,7 @@ public class CardsListViewModelTest {
     MockWebServer mockWebServer;
     Retrofit retrofit;
     RetrofitAPIInterface service;
+    DataModel dataModel;
 
     @Before
     public void setUp() {
@@ -63,7 +66,7 @@ public class CardsListViewModelTest {
     @Test
     public void fetchList() {
 
-        dataModel = Mockito.spy(DataModel.class);
+        dataModel = Mockito.mock(DataModel.class);
         dataModel.setTitle("abc");
 
         MutableLiveData<DataModel> data = new MutableLiveData<>();
@@ -72,8 +75,8 @@ public class CardsListViewModelTest {
         //Setting how up the mock behaves
         Mockito.doReturn(data).when(viewModel).getListObservable();
 //
-        viewModel.fetchList();
-        Mockito.verify(viewModel).fetchList();
+        repository.getList();
+        Mockito.verify(repository).getList();
 
         Assert.assertEquals(data, viewModel.getListObservable());
     }

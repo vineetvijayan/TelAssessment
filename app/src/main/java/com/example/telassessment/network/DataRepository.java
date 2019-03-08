@@ -16,13 +16,14 @@ public class DataRepository {
     @Inject
     RetrofitAPIInterface webService;
 
-    private static final MutableLiveData<DataModel> data = new MutableLiveData<>();
+    private static MutableLiveData<DataModel> data = new MutableLiveData<>();
 
     public DataRepository() {
-        AppController.getAppComponent().inject(this);
     }
 
     public MutableLiveData<DataModel> getList() {
+
+        AppController.getAppComponent().inject(this);
 
         Call<DataModel> call = webService.retrieveList();
         call.enqueue(new Callback<DataModel>() {
